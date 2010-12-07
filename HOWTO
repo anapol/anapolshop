@@ -1,0 +1,14 @@
+
+Define the account handler options in
+aashopaccount.ini.append.php
+
+Enable shop tab in admin2
+
+Set up workflow even handlers:
+
+Thank you for your order (shop/checkout)
+Delivery options (shop confirm order before)
+
+Import and set up anapol_shop_settings
+(preferrably under settings tab - admin2
+allows to do that from dashboard.
