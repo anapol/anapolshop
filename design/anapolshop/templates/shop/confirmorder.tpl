@@ -48,26 +48,26 @@
 {/if}
 
 
-<h3>{"Product items"|i18n("design/ezwebin/shop/confirmorder")}</h3>
+<h3>{"Product items"|i18n("design/anapolshop/shop/confirmorder")}</h3>
 <table class="list" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr>
     <th>
-    {"Count"|i18n("design/ezwebin/shop/confirmorder")}
+    {"Count"|i18n("design/anapolshop/shop/confirmorder")}
     </th>
 {*    <th>
-    {"VAT"|i18n("design/ezwebin/shop/confirmorder")}
+    {"VAT"|i18n("design/anapolshop/shop/confirmorder")}
     </th>
 *}    <th>
     Jednotková cena
     </th>
     <th>
-    {"Discount"|i18n("design/ezwebin/shop/confirmorder")}
+    {"Discount"|i18n("design/anapolshop/shop/confirmorder")}
     </th>
 {*    <th>
-    {"Total price ex. VAT"|i18n("design/ezwebin/shop/confirmorder")}
+    {"Total price ex. VAT"|i18n("design/anapolshop/shop/confirmorder")}
     </th>
 *}    <th>
-    {"Total price inc. VAT"|i18n("design/ezwebin/shop/confirmorder")}
+    {"Total price inc. VAT"|i18n("design/anapolshop/shop/confirmorder")}
     </th>
 </tr>
 {section name=ProductItem loop=$order.product_items show=$order.product_items sequence=array(bglight,bgdark)}
@@ -101,7 +101,7 @@
      <table width="100%" cellpadding="0" cellspacing="0">
 <tr>
 <td colspan="3">
-{"Selected options"|i18n("design/ezwebin/shop/confirmorder")}
+{"Selected options"|i18n("design/anapolshop/shop/confirmorder")}
 </td>
 </tr>
      {section name=Options loop=$ProductItem:item.item_object.option_list}
@@ -121,7 +121,7 @@
 
 
 
-<h3>{"Order summary"|i18n("design/ezwebin/shop/confirmorder")}:</h3>
+<h3>{"Order summary"|i18n("design/anapolshop/shop/confirmorder")}:</h3>
 <table class="list" cellspacing="0" cellpadding="0" border="0">
 <tr>
     <th>Shrnutí</th>
@@ -130,7 +130,7 @@
 </tr>
 <tr class="bglight">
     <td>
-    {"Subtotal of items"|i18n("design/ezwebin/shop/confirmorder")}:
+    {"Subtotal of items"|i18n("design/anapolshop/shop/confirmorder")}:
     </td>
 {*    <td>
     {$order.product_total_ex_vat|l10n( 'currency', $locale, $symbol )}

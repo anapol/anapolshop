@@ -7,15 +7,15 @@
 <div class="shop-basket">
 
 <ul>
-    <li class="selected">1. Nákupní košík</li>
-    <li>2. Zákazník</li>
-    <li>3. Doprava a typ platby
-    <li>4. Potvrzení objednávky</li>
+    <li class="selected">1. {"Shopping basket"|i18n("design/anapolshop/shop/basket")}</li>
+    <li>2. {'Customer'|i18n("design/anapolshop/shop/basket")}</li>
+    <li>3. {'Shipping and payment method'|i18n("design/anapolshop/shop/basket")}</li>
+    <li>4. {'Order confirmation'|i18n("design/anapolshop/shop/basket")}</li>
 </ul>
 <div class="buttonblock">
-<input class="button" type="submit" name="ContinueShoppingButton" value="Zpět" />
+<input class="button" type="submit" name="ContinueShoppingButton" value="{'Back'|i18n('design/anapolshop/shop/basket')}" />
 {if $basket.items}
-<input class="button" type="submit" name="CheckoutButton" value="{'Checkout'|i18n('design/ezwebin/shop/basket')}" /> &nbsp;
+<input class="button" type="submit" name="CheckoutButton" value="{'Checkout'|i18n('design/anapolshop/basket')}" /> &nbsp;
 {/if}
 </div>
 </div>
@@ -34,11 +34,11 @@
 {*<form method="post" action={"/shop/basket/"|ezurl}>*}
 
 <div class="attribute-header">
-    <h1 class="long">{"Basket"|i18n("design/ezwebin/shop/basket")}</h1>
+    <h1 class="long">{"Basket"|i18n("design/anapolshop/shop/basket")}</h1>
 </div>
 {section show=$removed_items}
 <div class="warning">
-    <h2>{"The following items were removed from your basket, because the products were changed"|i18n("design/ezwebin/shop/basket",,)}</h2>
+    <h2>{"The following items were removed from your basket, because the products were changed"|i18n("design/anapolshop/shop/basket",,)}</h2>
     <ul>
     {section name=RemovedItem loop=$removed_items}
         <li> <a href={concat("/content/view/full/",$RemovedItem:item.contentobject.main_node_id,"/")|ezurl}>{$RemovedItem:item.contentobject.name|wash}</a></li>
@@ -50,7 +50,7 @@
 {section show=$error}
 <div class="error">
 {section show=$error|eq(1)}
-<h2>{"Attempted to add object without price to basket."|i18n("design/ezwebin/shop/basket",,)}</h2>
+<h2>{"Attempted to add object without price to basket."|i18n("design/anapolshop/shop/basket",,)}</h2>
 {/section}
 </div>
 {/section}
@@ -58,7 +58,7 @@
 {section show=$error}
 <div class="error">
 {section show=eq($error, "aborted")}
-<h2>{"Your payment was aborted."|i18n("design/ezwebin/shop/basket",,)}</h2>
+<h2>{"Your payment was aborted."|i18n("design/anapolshop/shop/basket",,)}</h2>
 {/section}
 </div>
 {/section}
@@ -78,19 +78,19 @@
 <table class="list"  width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr>
     <th>
-    {"Count"|i18n("design/ezwebin/shop/basket")}
+    {"Count"|i18n("design/anapolshop/shop/basket")}
     </th>
 {*    <th>
-    {"VAT"|i18n("design/ezwebin/shop/basket")}
+    {"VAT"|i18n("design/anapolshop/shop/basket")}
     </th>
 *}    <th>
     Jednotková cena
     </th>
     <th>
-    {"Discount"|i18n("design/ezwebin/shop/basket")}
+    {"Discount"|i18n("design/anapolshop/shop/basket")}
     </th>
 {*    <th>
-    {"Total Price ex. VAT"|i18n("design/ezwebin/shop/basket")}
+    {"Total Price ex. VAT"|i18n("design/anapolshop/shop/basket")}
     </th>
 *}    <th>
     Celkem včetně DPH
@@ -141,7 +141,7 @@
      <table cellpadding="0" cellspacing="0">
 <tr>
 <td colspan="3">
-{"Selected options"|i18n("design/ezwebin/shop/basket")}
+{"Selected options"|i18n("design/anapolshop/shop/basket")}
 </td>
 </tr>
      {section name=Options loop=$Basket:ProductItem:item.item_object.option_list sequence=array(bglight, bgdark)}
@@ -165,10 +165,10 @@
      <td colspan="{*5*}4">
      </td>
 {*     <td>
-     <strong>{"Subtotal ex. VAT"|i18n("design/ezwebin/shop/basket")}</strong>:
+     <strong>{"Subtotal ex. VAT"|i18n("design/anapolshop/shop/basket")}</strong>:
 *}     </td>
      <td>
-     <strong>{"Subtotal inc. VAT"|i18n("design/ezwebin/shop/basket")}</strong>:
+     <strong>{"Subtotal inc. VAT"|i18n("design/anapolshop/shop/basket")}</strong>:
      </td>
 </tr>
 <tr>
@@ -220,7 +220,7 @@
 {section-else}
 
 <div class="feedback">
-<h2>{"You have no products in your basket."|i18n("design/ezwebin/shop/basket")}</h2>
+<h2>{"You have no products in your basket."|i18n("design/anapolshop/shop/basket")}</h2>
 </div>
 
 {/section}

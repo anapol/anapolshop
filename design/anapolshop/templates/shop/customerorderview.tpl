@@ -33,7 +33,7 @@
     Datum
     </th>
 {*    <th>
-    {"Total ex. VAT"|i18n("design/ezwebin/shop/customerorderview")}
+    {"Total ex. VAT"|i18n("design/anapolshop/shop/customerorderview")}
     </th>
 *}    <th>
     Celkem s DPH
@@ -91,7 +91,7 @@ Bez aktuálních objednávek.
     Datum
     </th>
 {*    <th>
-    {"Total ex. VAT"|i18n("design/ezwebin/shop/customerorderview")}
+    {"Total ex. VAT"|i18n("design/anapolshop/shop/customerorderview")}
     </th>
 *}    <th>
     Celkem s DPH
@@ -134,23 +134,23 @@ Bez archivovaných objednávek.
 
 {*
 <div class="attribute-header">
-  <h1>{"Purchase list"|i18n("design/ezwebin/shop/customerorderview")}</h1>
+  <h1>{"Purchase list"|i18n("design/anapolshop/shop/customerorderview")}</h1>
 </div>
 
 {section show=$product_list}
 <table class="list" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr>
     <th>
-    {"Product"|i18n("design/ezwebin/shop/customerorderview")}
+    {"Product"|i18n("design/anapolshop/shop/customerorderview")}
     </th>
     <th>
-    {"Amount"|i18n("design/ezwebin/shop/customerorderview")}
+    {"Amount"|i18n("design/anapolshop/shop/customerorderview")}
     </th>
     <th>
-    {"Total ex. VAT"|i18n("design/ezwebin/shop/customerorderview")}
+    {"Total ex. VAT"|i18n("design/anapolshop/shop/customerorderview")}
     </th>
     <th>
-    {"Total inc. VAT"|i18n("design/ezwebin/shop/customerorderview")}
+    {"Total inc. VAT"|i18n("design/anapolshop/shop/customerorderview")}
     </th>
 </tr>
 

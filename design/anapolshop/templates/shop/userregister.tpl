@@ -38,7 +38,7 @@
 {if $input_error}
  <div class="warning">
  <p>
- {"Input did not validate. All fields marked with * must be filled in."|i18n("design/ezwebin/shop/userregister")}
+ {"Input did not validate. All fields marked with * must be filled in."|i18n("design/anapolshop/shop/userregister")}
  </p>
  </div>
  {if $email_input_error}
