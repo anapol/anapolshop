@@ -22,7 +22,7 @@ Objednávka číslo {$order.order_nr}
 {set $isbn=''}
 {if $item.item_object.contentobject.contentclass_id|eq(36)}
 {if $item.item_object.contentobject.data_map.isbn.has_content}
-{set $isbn=$item.item_object.contentobject.data_map.isbn.content}
+{set $isbn=$item.item_object.contentobject.data_map.isbn.content.value}
 {/if}
 {/if}
 {if $item.item_count|gt(1)}{$item.item_count} x {/if}{$item.object_name} {if $isbn}(ISBN: {$isbn}){/if}: {$item.total_price_inc_vat|l10n( 'currency', $locale, $symbol )}
