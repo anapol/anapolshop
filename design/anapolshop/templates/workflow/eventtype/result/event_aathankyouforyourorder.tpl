@@ -28,6 +28,25 @@
 {/foreach}
 
 
+    <script type="text/javascript">
+    
+_gaq.push(['_addTrans',
+   '{$order.order_nr}',           // order ID - required
+   'e-shop', // affiliation or store name
+   '{$order.total_inc_vat}',          // total - required
+   '0',           // tax
+   '0',          // shipping
+   '',       // city
+   '',     // state or province
+   ''             // country
+]);
+_gaq.push(['_trackTrans']);
+
+    </script>
+
+
+
+
 
 <form action={$request_uri|ezroot} method="post" >
 <input type="hidden" name="ConfirmOrderButton" value="1"/>
