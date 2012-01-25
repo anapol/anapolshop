@@ -1,7 +1,7 @@
 <?php
 
 //
-// Copyright 2010, anapol s.r.o.
+// Copyright 2010, 2011, 2012, anapol s.r.o.
 // based on ezusershopaccounthandler.php from 4.4
 //
 // changes: configurable xml/tpl variables and account name from aashopaccount.ini

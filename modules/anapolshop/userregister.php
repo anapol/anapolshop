@@ -1,6 +1,6 @@
 <?php
 //
-// Copyright 2010, anapol s.r.o.
+// Copyright 2010, 2011, 2012, anapol s.r.o.
 // based on ezpublish/shop/userregister.php 4.4
 //
 
@@ -84,22 +84,45 @@ $tpl->setVariable( "input_error", false );
 if ( $module->isCurrentAction( 'Store' ) )
 {
     $inputIsValid = true;
+    $oneOfValidationsGroupsToHTTPNames = array();
+    $oneOfValidationsGroupsToCount = array();
 
     foreach ( $ini->variableArray( "OrderAccount", "FieldsArray" ) as $accountItemSpec ) {
         $processedAISpec = AnapolShopUtilities::accountItem( $accountItemSpec );
         $httpVariableName = $processedAISpec["httpPostName"];
-        $validation = $processedAISpec["validation"];
+        $validations = $processedAISpec["validations"];
+        $oneOfValidationActiveGroupID = false;
+        foreach($validations as $validation) {
+            $n = sscanf($validation, "oneof-%s", $oneOfGroupID);
+            if ($n == 1) {
+                $oneOfValidationActiveGroupID = $oneOfGroupID;
+                if (array_key_exists($oneOfGroupID, $oneOfValidationsGroupsToHTTPNames)) {
+                    array_push($oneOfValidationsGroupsToHTTPNames[$oneOfGroupID], $httpVariableName);
+                } else {
+                    $oneOfValidationsGroupsToHTTPNames[$oneOfGroupID] = array($httpVariableName);
+                }
+                if ( ! array_key_exists($oneOfGroupID, $oneOfValidationsGroupsToCount)) {
+                    $oneOfValidationsGroupsToCount[$oneOfGroupID] = 0;
+                }
+            }
+        }
         
         $valueFromHTTP = trim( $http->postVariable( $httpVariableName ) );
-        if ( $validation == "nonempty" ) {
+        if ( array_key_exists( "nonempty", $validations) ) {
             if ( $valueFromHTTP == "" ) {
                 $inputIsValid = false;
                 $inputErrors[$httpVariableName] = "nonempty";
             }
-        } else if ( $validation == "email" ){
+        }
+        if ( array_key_exists( "email", $validations) ) {
             if ( ! eZMail::validate( $valueFromHTTP ) ) {
                 $inputIsValid = false;
                 $inputErrors[$httpVariableName] = "email";
+            }
+        }
+        if ( ! $oneOfValidationActiveGroupID === false ) {
+            if ( ! ( $valueFromHTTP == "") ) {
+                $oneOfValidationsGroupsToCount[$oneOfValidationActiveGroupID] = $oneOfValidationsGroupsToCount[$oneOfValidationActiveGroupID] + 1;
             }
         }
 
@@ -109,6 +132,17 @@ if ( $module->isCurrentAction( 'Store' ) )
         $aaXMLValues[$xmlName] = $valueFromHTTP;
         $aaTPLValues[$tplName] = $valueFromHTTP;
     }
+
+    //process one of groups, mark failed groups
+    foreach(array_keys($oneOfValidationsGroupsToHTTPNames) as $validationGroupID) {
+        if ($oneOfValidationsGroupsToCount[$validationGroupID] == 0) {
+            $inputIsValid = false;
+            foreach($oneOfValidationsGroupsToHTTPNames[$validationGroupID] as $httpVariableName) {
+                $inputErrors[$httpVariableName] = "oneof-".$validationGroupID;
+            }
+        }
+    }
+
 
     if ( $inputIsValid == true )
     {

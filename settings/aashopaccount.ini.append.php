@@ -2,7 +2,7 @@
 
 
 [OrderAccount]
-# xmlname;[templatename];[userObjectAttributeName];[nocopy(fromPreviousOrder)];httppostname;[nonempty|email](validation)
+# xmlname;[templatename];[userObjectAttributeName];[nocopy(fromPreviousOrder)];httppostname;[nonempty|email|oneof-id](validation);..(validation)
 FieldsArray[]
 FieldsArray[]=first-name;first_name;first_name;;FirstName;nonempty
 FieldsArray[]=last-name;last_name;last_name;;LastName;nonempty

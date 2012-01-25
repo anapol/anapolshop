@@ -11,7 +11,7 @@ class AnapolShopUtilities
             "userObjectAttributeName" => "",
             "copyFromPreviousOrder" => true,
             "httpPostName" => "",
-            "validation" => ""
+            "validations" => array()
         );
         $spec["xmlName"] = $spec["tplName"] = $spec["httpPostName"] = $accountItemSpec[0];
         if ( count($accountItemSpec) > 1 and ( $accountItemSpec[1] or $accountItemSpec[1] == "0" )) {
@@ -26,8 +26,12 @@ class AnapolShopUtilities
         if ( count($accountItemSpec) > 4 and ( $accountItemSpec[4] or $accountItemSpec[4] == "0" )) {
             $spec["httpPostName"] = $accountItemSpec[4];
         }
-        if ( count($accountItemSpec) > 5 and ( $accountItemSpec[5] or $accountItemSpec[5] == "0" )) {
-            $spec["validation"] = $accountItemSpec[5];
+        if ( count($accountItemSpec) ) > 5 {
+            for($specItemID=5; $specItemID<count($accountItemSpec); $specItemID++) {
+                if ($accountItemSpec[$specItemID] or $accountItemSpec[$specItemID] === "0" ) {
+                    array_push($spec["validation"], $accountItemSpec[$specItemID]);
+                }
+            }
         }
         return $spec;
     }
