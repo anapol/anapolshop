@@ -111,9 +111,12 @@ if ( $module->isCurrentAction( 'Store' ) )
         
         $valueFromHTTP = trim( $http->postVariable( $httpVariableName ) );
         if ( array_key_exists( "nonempty", $validations) ) {
+            eZDebug::writeError("Checking for nonempty ".$httpVariableName);
             if ( $valueFromHTTP == "" ) {
                 $inputIsValid = false;
                 $inputErrors[$httpVariableName] = "nonempty";
+                eZDebug::writeError("Error, ".$httpVariableName." is empty");
+
             }
         }
         if ( array_key_exists( "email", $validations) ) {
