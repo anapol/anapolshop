@@ -115,7 +115,7 @@ if ( $module->isCurrentAction( 'Store' ) )
             }
         }
         if ( ! ( array_search( "email", $validations) === false ) ) {
-            if ( ! eZMail::validate( $valueFromHTTP ) ) {
+            if ( ( ! $valueFromHTTP === "" ) && ( ! eZMail::validate( $valueFromHTTP ) ) ) {
                 $inputIsValid = false;
                 $inputErrors[$httpVariableName] = "email";
             }
