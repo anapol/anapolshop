@@ -107,6 +107,8 @@ if ( $module->isCurrentAction( 'Store' ) )
             }
         }
         
+        eZDebug::writeError("Checking ".$httpVariableName." validations:".$validations[0].":".$validations[1]);
+        
         $valueFromHTTP = trim( $http->postVariable( $httpVariableName ) );
         if ( array_key_exists( "nonempty", $validations) ) {
             if ( $valueFromHTTP == "" ) {
