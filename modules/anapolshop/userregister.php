@@ -107,19 +107,14 @@ if ( $module->isCurrentAction( 'Store' ) )
             }
         }
         
-        eZDebug::writeError("Checking ".$httpVariableName." validations:".$validations[0].":".$validations[1]);
-        
         $valueFromHTTP = trim( $http->postVariable( $httpVariableName ) );
-        if ( array_key_exists( "nonempty", $validations) ) {
-            eZDebug::writeError("Checking for nonempty ".$httpVariableName);
+        if ( array_search( "nonempty", $validations) ) {
             if ( $valueFromHTTP == "" ) {
                 $inputIsValid = false;
                 $inputErrors[$httpVariableName] = "nonempty";
-                eZDebug::writeError("Error, ".$httpVariableName." is empty");
-
             }
         }
-        if ( array_key_exists( "email", $validations) ) {
+        if ( array_search( "email", $validations) ) {
             if ( ! eZMail::validate( $valueFromHTTP ) ) {
                 $inputIsValid = false;
                 $inputErrors[$httpVariableName] = "email";
