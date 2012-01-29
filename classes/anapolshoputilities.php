@@ -29,7 +29,7 @@ class AnapolShopUtilities
         if ( count($accountItemSpec) > 5 ) {
             for($specItemID=5; $specItemID<count($accountItemSpec); $specItemID++) {
                 if ($accountItemSpec[$specItemID] or $accountItemSpec[$specItemID] === "0" ) {
-                    array_push($spec["validation"], $accountItemSpec[$specItemID]);
+                    array_push($spec["validations"], $accountItemSpec[$specItemID]);
                 }
             }
         }
