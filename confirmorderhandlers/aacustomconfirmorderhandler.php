@@ -43,7 +43,7 @@ class AACustomConfirmOrderHandler
             if ( !$emailSender )
                 $emailSender = $ini->variable( "MailSettings", "AdminEmail" );
 
-            if ( isset( $params['email'] ) )
+            if ( isset( $params['email'] ) and $params['email'] != "" )
             {
                 $email = $params['email'];
 
@@ -57,20 +57,34 @@ class AACustomConfirmOrderHandler
                 $mail->setSubject( $subject );
                 $mail->setBody( $templateResult );
                 $mailResult = eZMailTransport::send( $mail );
+
+                // order email set, send email to admin with that sender address
+                $adminMail = new eZMail();
+                $adminAddress = $ini->variable( 'MailSettings', 'AdminEmail' );
+
+                if ( $tpl->hasVariable( 'content_type' ) )
+                    $adminMail->setContentType( $tpl->variable( 'content_type' ) );
+
+                $adminMail->setReceiver( $adminAddress );
+                $adminMail->setSender( $email );
+                $adminMail->setSubject( $subject );
+                $adminMail->setBody( $templateResult );
+                $mailResult = eZMailTransport::send( $adminMail );
+            } else {
+                // no order email set, send email to admin with default sender address
+                $email = $ini->variable( 'MailSettings', 'AdminEmail' );
+
+                $mail = new eZMail();
+
+                if ( $tpl->hasVariable( 'content_type' ) )
+                    $mail->setContentType( $tpl->variable( 'content_type' ) );
+
+                $mail->setReceiver( $email );
+                $mail->setSender( $emailSender );
+                $mail->setSubject( $subject );
+                $mail->setBody( $templateResult );
+                $mailResult = eZMailTransport::send( $mail );
             }
-
-            $email = $ini->variable( 'MailSettings', 'AdminEmail' );
-
-            $mail = new eZMail();
-
-            if ( $tpl->hasVariable( 'content_type' ) )
-                $mail->setContentType( $tpl->variable( 'content_type' ) );
-
-            $mail->setReceiver( $email );
-            $mail->setSender( $emailSender );
-            $mail->setSubject( $subject );
-            $mail->setBody( $templateResult );
-            $mailResult = eZMailTransport::send( $mail );
         }
     }
 }
