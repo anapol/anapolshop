@@ -1,14 +1,22 @@
 
+Shop tab in admin interface will be enabled automatially when this extension
+is active.
+
+
+
 Define the account handler options in
 aashopaccount.ini.append.php
 
-Enable shop tab in admin2
+Set up workflow event handlers:
 
-Set up workflow even handlers:
-
-Thank you for your order (shop/checkout)
-Delivery options (shop confirm order before)
+ * Thank you for your order (shop/checkout)
+ * Delivery options (shop confirm order before)
 
 Import and set up anapol_shop_settings
 (preferrably under settings tab - admin2
 allows to do that from dashboard.
+
+Grant access to shop/buy and anapolshop/buy for users you want to be able to
+buy.
+
+Add anapolshop design to a chain of your site designs for user siteaccess.
