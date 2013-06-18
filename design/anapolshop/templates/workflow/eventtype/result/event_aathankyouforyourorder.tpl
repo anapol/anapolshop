@@ -16,7 +16,7 @@
 {def $hal=$order.total_inc_vat|mul(100)|ceil()|concat('')|extract_right(2)}
 {def $kor=$order.total_inc_vat|floor()}
 {set $castka_ebanka=concat($kor,'.',$hal)}
-{def $ebanka=concat("https://klient3.rb.cz/ebts/owa/shop.payment?shopname=MARECEK&creditaccount=262047001&amount=",$castka_ebanka,"&varsymbol=",$varsymbol,"&url=http://umarecka.cz/&creditbank=5500")}
+{def $ebanka=concat("https://klient3.rb.cz/ebts/owa/shop.payment?shopname=XXXXX&creditaccount=0000000&amount=",$castka_ebanka,"&varsymbol=",$varsymbol,"&url=http://example.com/&creditbank=5500")}
 
 {foreach $order.order_items as $orderItem}
 {*$orderItem.description}: {$orderItem.price_inc_vat|l10n( 'currency', $locale, $symbol )*}
@@ -86,7 +86,7 @@ _gaq.push(['_trackTrans']);
 <h2><a href="{$ebanka}">Zaplatit eKontem nyní</a></h2>
 <h3>Údaje platby (budou předvyplněny):</h3>
 <ul>
- <li>Číslo účtu: 262047001/5500 Raiffeisenbank (eBanka)</li>
+ <li>Číslo účtu: 000000000/5500 Raiffeisenbank (eBanka)</li>
  <li>částka: {$castka}</li>
  <li>Variabilní symbol: {$varsymbol}</li>
  <li>Konstantní symbol: 0308</li>
@@ -100,7 +100,7 @@ _gaq.push(['_trackTrans']);
 <p>Děkujeme za Vaši objednávku. Potvrzení přijetí objednávky naleznete také v mailu.</p>
 <p>Zvolili jste platbu předem. Zaplaťte prosím pomocí níže uvedených údajů:</p>
 <ul>
- <li>Číslo účtu: 262047001/5500 Raiffeisenbank</li>
+ <li>Číslo účtu: 000000000/5500 Raiffeisenbank</li>
  <li>částka: {$castka}</li>
  <li>Variabilní symbol: {$varsymbol}</li>
  <li>Konstantní symbol: 0308</li>

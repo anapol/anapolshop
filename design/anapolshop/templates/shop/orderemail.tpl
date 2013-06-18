@@ -1,9 +1,9 @@
 {*?template charset=utf-8?*}
 {def $isbn=''}
-{set-block scope=root variable=subject}Objednávka umarečka.cz číslo {$order.order_nr}{/set-block}
+{set-block scope=root variable=subject}Objednávka example.com číslo {$order.order_nr}{/set-block}
 Dobrý den,
 
-toto je automaticky generované potvrzení uložení Vaší objednávky v internetovém obchodě umarecka.cz.
+toto je automaticky generované potvrzení uložení Vaší objednávky v internetovém obchodě example.com.
 
 Objednávka číslo {$order.order_nr}
 
@@ -79,7 +79,7 @@ Celkem včetně DPH: {$order.total_inc_vat|l10n( 'currency', $locale, $symbol )}
 Platba: 
  Zvolili jste platbu předem. Zaplaťte prosím pomocí níže uvedených údajů:
  
- Číslo účtu: 262047001/5500 Raiffeisenbank
+ Číslo účtu: 000000000/5500 Raiffeisenbank
  částka: {$order.total_inc_vat|l10n( 'currency', $locale, $symbol )}
  Variabilní symbol: {$order.order_nr}
  Konstantní symbol: 0308
@@ -90,9 +90,9 @@ Platba:
 Tip: pokud jste zaregistrováni v našem obchodě, můžete stav vyřízení Vaší objednávky sledovat po přihlášení ve Vašem profilu.
 
 Informační mail o novinkách si můžete objednat na
-http://umarecka.cz/cze/o_nas/objednani_odberu_informacniho_mailu_o_kniznich_novinkach
+http://example.com/cze/o_nas/objednani_odberu_informacniho_mailu
 
 
 Děkujeme za Váš nákup.
 
-Knihkupectví umarečka.cz
+example.com
